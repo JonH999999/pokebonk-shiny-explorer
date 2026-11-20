@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 
-<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>PokéBonk 异色地图图鉴 · v33</title><style>
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>PokéBonk 异色地图图鉴 · v34</title><style>
 :root{color-scheme:dark;--bg:#090c12;--card:#141a24;--card2:#1b2330;--border:#303b4c;--ink:#f4f7fb;--muted:#a3b0c2;--accent:#f45362;--green:#78deb3;--purple:#c0a3f7;--gold:#efc97e}body.light{color-scheme:light;--bg:#f5f7fa;--card:#fff;--card2:#e9eff6;--border:#cfd8e5;--ink:#1a2432;--muted:#56677b;--accent:#bc384e;--green:#137c58;--purple:#744caf;--gold:#906a10}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.52 system-ui,-apple-system,'Microsoft YaHei',sans-serif}.wrap{max-width:1540px;margin:auto;padding:25px 24px 60px}header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}h1{font-size:25px;margin:0;font-weight:850}.muted{color:var(--muted)}small{font-size:11px}button,input,select{font:inherit}button{color:var(--ink);background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:9px 12px;cursor:pointer}button.active{background:color-mix(in srgb,var(--accent) 12%,var(--card));border-color:var(--accent);color:var(--ink)}button:hover{border-color:var(--accent)}button:focus-visible,input:focus-visible{outline:2px solid var(--accent)}.maps{display:grid;grid-template-columns:repeat(9,minmax(110px,1fr));gap:8px;margin:24px 0 18px}.maps button{text-align:center;min-height:66px}.maps b{display:block}.maps small{display:block;color:var(--muted)}.panel{border:1px solid var(--border);background:var(--card);border-radius:16px;padding:15px;margin-bottom:16px}.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.cluster{display:flex;align-items:center;flex-wrap:wrap;gap:4px}.cluster>span{font-size:12px;font-weight:700;color:var(--muted);margin-right:5px}.cluster button{padding:8px 11px}.search{margin-left:auto;min-width:200px;flex:1;max-width:320px;background:var(--card2);border:1px solid var(--border);border-radius:9px;padding:10px;color:var(--ink)}.notice{border-left:3px solid var(--gold);background:var(--card);border-radius:5px;padding:12px 15px;color:var(--muted);font-size:12px;margin:13px 0}.overview{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:18px 0}.metric{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:8px 13px}.metric b{font-size:22px}.metric span{font-size:11px;color:var(--muted);padding-left:5px}h2{margin:0 0 2px;font-size:21px}h3{font-size:16px;margin:0}.section{margin:24px 0 8px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);padding-bottom:8px;gap:12px}.section p{margin:3px 0;color:var(--muted);font-size:12px}.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px}.mon{position:relative;border:1px solid var(--border);border-radius:13px;background:var(--card);padding:12px;min-height:178px;text-align:left;display:flex;flex-direction:column;gap:7px;cursor:pointer}.mon:hover{border-color:var(--accent)}.avatar{height:83px;display:flex;justify-content:center;align-items:center;background:var(--card2);border-radius:10px}.avatar img{height:76px;width:76px;object-fit:contain;image-rendering:pixelated}.name{font-size:14px;font-weight:800;display:flex;justify-content:space-between;gap:4px}.name small{color:var(--muted);font-weight:500}.tags{display:flex;gap:4px;flex-wrap:wrap}.tag{font-size:10px;border:1px solid var(--border);border-radius:5px;padding:2px 5px;color:var(--muted)}.tag.reg{color:var(--green)}.tag.spe{color:var(--gold)}.tag.old{color:var(--purple)}.loc{font-size:11px;color:var(--muted);margin-top:auto}.empty{padding:30px 12px;color:var(--muted);font-size:13px}.modalBG{display:none;position:fixed;inset:0;background:#000b;z-index:50;padding:20px;align-items:center;justify-content:center}.modalBG.open{display:flex}.modal{width:min(780px,100%);max-height:88vh;overflow:auto;border-radius:17px;padding:22px;background:var(--card);border:1px solid var(--border)}.modalTop{display:flex;justify-content:space-between;align-items:center}.detailTable{width:100%;border-collapse:collapse;margin:12px 0}.detailTable th,.detailTable td{text-align:left;border-bottom:1px solid var(--border);padding:7px 9px;vertical-align:top}.detailTable th{color:var(--muted);font-weight:600}.toggle{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}input[type=checkbox]{accent-color:var(--accent)}.actions{display:flex;gap:7px;flex-wrap:wrap}.footer{margin-top:32px;border-top:1px solid var(--border);padding-top:18px;font-size:12px;color:var(--muted)}.secCount{color:var(--accent);margin-left:8px;font-weight:800}.strong{color:var(--ink)}@media(max-width:1050px){.maps{grid-template-columns:repeat(5,minmax(95px,1fr))}}@media(max-width:640px){.wrap{padding:14px 10px 40px}.maps{display:flex;overflow-x:auto}.maps button{min-width:115px}header h1{font-size:20px}.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.mon{padding:9px}.search{max-width:none;margin:0;flex-basis:100%}.section{align-items:start;flex-direction:column}}
 
 .mechanic{margin:13px 0 18px;padding:15px 17px;border:1px solid var(--border);border-radius:14px;background:var(--card)}.mechanic h3{margin:0 0 8px}.mechanicGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.mechanicGrid>div{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:10px 12px}.mechanicGrid p{margin:5px 0 0;font-size:12px;color:var(--muted)}.mechanic p{margin:8px 0 0;font-size:12px;color:var(--muted)}.mechanic .pill{font-weight:750;font-size:11px;border:1px solid var(--border);border-radius:7px;padding:3px 7px;color:var(--gold);display:inline-block}.mechanic .pill.purple{color:var(--purple)}.gaps{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.gaps button{font-size:12px;padding:7px 10px}.tag.gap{color:var(--gold);border-color:var(--gold)}.statusNote{color:var(--gold);font-weight:750}.sourceLegend{margin-top:9px;font-size:11px;color:var(--muted)}@media(max-width:640px){.mechanicGrid{grid-template-columns:1fr}}
@@ -343,6 +343,198 @@ $('theme').onclick=()=>{document.body.classList.toggle('light');$('theme').textC
 $('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{const x=JSON.parse(await f.text());for(const t of ['normal','classic'])if(Array.isArray(x[t])){owned[t]=new Set(x[t].map(Number).filter(Number.isFinite));localStorage.setItem('pb-exclude-owned-'+t,JSON.stringify([...owned[t]]));}render();alert('标记清单已导入');}catch{alert('清单格式无效')}e.target.value=''};
 $('export').onclick=()=>{const blob=new Blob([JSON.stringify({normal:[...owned.normal],classic:[...owned.classic]},null,2)],{type:'application/json'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='pokebonk-shiny-owned.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),2000)};
 $('close').onclick=()=>$('modalBG').classList.remove('open');$('modalBG').onclick=e=>{if(e.target===$('modalBG'))$('modalBG').classList.remove('open')};addEventListener('keydown',e=>{if(e.key==='Escape')$('modalBG').classList.remove('open')});render();
+</script><script>
+/* PokéBonk Shiny Explorer v34 - separately verified spawn-source view.
+ * This file adds a read-only source catalogue; it never changes shiny eligibility,
+ * the underlying map pool, user collections or save formats.
+ * Source: mwoblfeo assets-CTIJW1AK.js (biome residents/specials/totems/summoners).
+ */
+(function () {
+  'use strict';
+  if (window.__pbSpawnV34) return;
+  window.__pbSpawnV34 = true;
+  if (typeof DB === 'undefined' || typeof render !== 'function' || !document.getElementById('results')) return;
+
+  const configs = {
+    forest: {residents:[60,54,79,118,25,100,81,74,50,27,96,63,77,58,37,56,92],specials:[206,207,231,232],totems:[[20,47,24,17],[71,18,49,115],[22,36,110,114]],summoners:[[12,15],[30,33],[103,45]]},
+    desert: {residents:[23,21,84,128,115,77,52,19,41,37,58,102,54,29,32],specials:[231,232,207,208,206],totems:[[57,95,75],[107,111,141],[128,78,139]],summoners:[[51,75],[34,75],[51,34,76]]},
+    coast: {residents:[102,52,50,74,27,138,140,113,108,128],specials:[211,207],totems:[[55,22,117,26],[82,119,85,62],[148,141,139,135]],summoners:[[119,61],[55,82],[117,99]]},
+    glacier: {residents:[41,74,95,35,39,133,143,147],specials:[211,206],totems:[[80,64,40,42],[36,122,134,76],[143,148,9,62]],summoners:[[42,64],[87,80],[9,149]]},
+    canela: {residents:[19,72,120,116,90,98,79,138,140,126,4],specials:[211,231,232,208],totems:[[20,117,5],[110,59,42],[139,141,142]],summoners:[[73,121],[110,42],[5,89]]},
+    cave: {residents:[41,46,63,39,100,81,84,48,66,25,27,132,113,108,54,56,79,23,111],specials:[206,208,207,232],totems:[[42,47,67,82],[64,49,112,85],[68,76,26,105]],summoners:[[42,75],[64,82],[68,76]]},
+    encina: {residents:[43,46,10,13,41,163,83,54,79,102,204,187,167,165,177],specials:[206,211,207],totems:[[166,162,186,199],[182,210,164,203],[178,212,181,237]],summoners:[[184,195],[189,168],[210,164]]},
+    iris: {residents:[163,167,161,177,209,216,234,203,133,77,58,37,126,92,96,235],specials:[206,231,232,207],totems:[[168,210,203,185],[219,198,166,237],[181,176,196,217]],summoners:[[162,164],[217,189],[219,210]]},
+    furia: {residents:[129,60,118,194,183,147,116,223,170,109,88,19,41,198,228,21,54],specials:[211,207],totems:[[184,186,195,119],[171,224,229,198],[148,199,110,226]],summoners:[[184,195],[224,171],[130,229]]},
+    plateado: {residents:[246,215,231,216,200,74,95,66,41,220,225,227,81,77,84,228,198,236],specials:[208,232,207],totems:[[217,232,221,76],[229,82,68,185],[208,227,237,247]],summoners:[[217,221],[232,42],[247,229]]}
+  };
+  if (Object.keys(configs).some(m => !DB.maps[m] || !DB.current[m])) {
+    window.__pbSpawnV34 = false;
+    return;
+  }
+
+  const sourceNames = {regular:'普通敌人',special:'地图特殊物种',totem:'霸主 Totem',summoner:'召唤者',alpha:'普通 Alpha 候选',rift:'本局裂隙 Alpha'};
+  const settings = {mode:'shiny',source:'all',layout:'species'};
+  const sources = [], seen = new Set();
+  function add(id, map, stage, kind, origin, note) {
+    if (!SP[id]) return;
+    const key = [id,map,stage == null ? '?' : stage,kind,origin].join('/');
+    if (seen.has(key)) return;
+    seen.add(key);
+    sources.push({id,map,stage,kind,origin,note});
+  }
+  for (const m of MAPS) {
+    const cfg = configs[m];
+    for (const id of cfg.residents) add(id,m,null,'regular','地图常驻配置','地图级原生配置，具体楼层待核实；不等于该层必然刷新');
+    for (const id of cfg.specials) add(id,m,null,'special','地图特殊物种','地图级原生配置，具体楼层待核实；不能证明经典异色资格');
+    for (let st=1; st<=3; st++) {
+      const pool = DB.current[m][String(st)];
+      for (const id of pool.regular) add(id,m,st,'regular','常规敌人静态候选','原生建池规则推导的楼层候选，非实际每局刷新保证');
+      for (const id of pool.late) add(id,m,st,'regular','后期敌人静态候选','原生后期池候选，仍取决于局内进度与生成条件');
+      for (const id of cfg.totems[st-1]) add(id,m,st,'totem','霸主 Totem','原生 totems 第'+st+'层物种配置');
+      for (const id of cfg.summoners[st-1]) add(id,m,st,'summoner','召唤者','原生 summoners 第'+st+'层物种配置');
+      for (const id of pool.regular) add(id,m,st,'alpha','普通 Alpha 候选','仅据普通敌人静态候选生成，Alpha 选种规则尚未独立核实');
+    }
+  }
+
+  const styles = document.createElement('style');
+  styles.textContent = '.sourceModeBar{margin:12px 0 10px;padding:11px 14px}.sourcePanel{margin-top:-7px}.sourcePanel[hidden]{display:none!important}.spawnNotice{font-size:12px;color:var(--muted);line-height:1.7;margin:5px 0 10px}.sourceCards .mon{min-height:156px}.sourceCards .avatar{height:76px}.sourceCards .avatar img{height:68px;width:68px}.sourceTags{display:flex;gap:4px;flex-wrap:wrap}.sourceTag{display:inline-block;font-size:10px;padding:2px 5px;border:1px solid var(--border);border-radius:6px;color:var(--green)}.sourceTag.special{color:var(--gold)}.sourceTag.totem{color:var(--purple)}.sourceTag.summoner{color:var(--accent)}.sourceTag.alpha{color:var(--muted)}.sourceGroup{border:1px solid var(--border);background:var(--card);border-radius:12px;padding:12px;margin:11px 0}.sourceGroup summary{cursor:pointer;font-weight:750}.sourceGroup .cards{padding-top:12px}.sourceEmpty{padding:22px;border:1px dashed var(--border);border-radius:10px;color:var(--muted)}body.spawnView #variantCluster,body.spawnView #othersWrap,body.spawnView #hideOwnedWrap,body.spawnView #mark,body.spawnView #collectionModeHint,body.spawnView #classicGap,body.spawnView #legendarySection,body.spawnView #specialMetric{display:none!important}body.spawnView .sourcePanel{display:block}';
+  document.head.append(styles);
+  const variantCluster = document.querySelector('[data-variant]')?.closest('.cluster');
+  if (variantCluster) variantCluster.id='variantCluster';
+  const othersLabel = document.getElementById('others')?.closest('label');
+  if (othersLabel) othersLabel.id='othersWrap';
+  const ownedLabel = document.getElementById('hideOwned')?.closest('label');
+  if (ownedLabel) ownedLabel.id='hideOwnedWrap';
+
+  const bar = document.createElement('div');
+  bar.className='panel controls sourceModeBar';
+  bar.innerHTML='<div class="cluster"><span>查询模式</span><button type="button" data-source-mode="shiny" class="active">✨ 异色筛选</button><button type="button" data-source-mode="spawn">🗺️ 全部出没</button></div><small class="muted">出没来源与异色资格分别判定 · 第四赛季 mwoblfeo</small>';
+  const mapsRoot = document.getElementById('maps');
+  mapsRoot.parentNode.insertBefore(bar,mapsRoot);
+  const filters = document.createElement('div');
+  filters.className='panel sourcePanel';filters.hidden=true;
+  filters.innerHTML='<div class="controls"><div class="cluster"><span>来源类型</span><button type="button" data-source-filter="all" class="active">全部来源</button><button type="button" data-source-filter="regular">普通敌人</button><button type="button" data-source-filter="special">特殊物种</button><button type="button" data-source-filter="totem">霸主</button><button type="button" data-source-filter="summoner">召唤者</button><button type="button" data-source-filter="alpha">普通 Alpha 候选</button><button type="button" data-source-filter="rift">本局裂隙 Alpha</button></div><div class="cluster"><span>排列方式</span><button type="button" data-source-layout="species" class="active">按精灵</button><button type="button" data-source-layout="map">按地图和楼层</button></div></div><p id="sourceEvidenceNote" class="spawnNotice"></p>';
+  const standardFilters = document.getElementById('search').closest('.panel');
+  standardFilters.insertAdjacentElement('afterend',filters);
+
+  function selectedRecords(map=state.map,stage=state.stage,kind=settings.source) {
+    const query=state.q.trim().toLowerCase().replace('#','');
+    return sources.filter(r => (kind==='all' ? r.kind!=='alpha' : r.kind===kind)
+      && (map==='all'||map===r.map)
+      && (stage==='all'||r.stage==null||String(r.stage)===String(stage))
+      && (!query||String(r.id).includes(query)||String(SP[r.id].name).toLowerCase().includes(query)));
+  }
+  function uniqueIds(rows) {return [...new Set(rows.map(r=>r.id))].sort((a,b)=>a-b);}
+  function sourceTag(k){return '<span class="sourceTag '+k+'">'+escap(sourceNames[k]||k)+'</span>';}
+  function spawnThumb(id){return '<div class="avatar"><img src="'+img(id)+'" alt="'+escap(SP[id]?.name||String(id))+'" loading="lazy" decoding="async" onerror="this.onerror=null;this.style.display=\'none\';this.parentElement.textContent=\'#'+id+'\'"></div>';}
+  function openSourceDetail(id) {
+    const p=SP[id], rows=sources.filter(r=>r.id===id && r.kind!=='alpha');
+    document.getElementById('detailTitle').textContent=(p?.name||'#'+id)+' · #'+id+' · 出没来源';
+    let html='<p class="muted">以下均按精确物种编号记录，不经由进化家族继承身份；出没不等于普通/经典异色资格。</p>';
+    html+='<table class="detailTable"><tr><th>地图</th><th>楼层</th><th>来源类型</th><th>来源证据与限制</th></tr>';
+    for (const r of rows.sort((a,b)=>MAPS.indexOf(a.map)-MAPS.indexOf(b.map)||(a.stage??0)-(b.stage??0)||a.kind.localeCompare(b.kind))) {
+      html+='<tr><td>'+escap(mapName(r.map))+'</td><td>'+(r.stage==null?'楼层待核实':'第'+r.stage+'层')+'</td><td>'+sourceTag(r.kind)+' '+escap(r.origin)+'</td><td>'+escap(r.note)+'</td></tr>';
+    }
+    html+='</table><p class="muted">普通 Alpha 候选仅供检索、未纳入上述确定来源。本局裂隙 Alpha 必须从游戏运行时读取 alphaId；网页不会猜测全地图候选。</p>';
+    document.getElementById('detail').innerHTML=html;
+    document.getElementById('modalBG').classList.add('open');
+  }
+  function spawnCard(id,rows){
+    const p=SP[id], el=document.createElement('button');
+    el.type='button';el.className='mon';
+    const names=[...new Set(rows.map(r=>r.kind))];
+    const loc=[...new Set(rows.map(r=>mapName(r.map)))].slice(0,3);
+    const extra=rows.some(r=>r.stage==null)?' · 含地图级来源（楼层待核实）':'';
+    el.innerHTML=spawnThumb(id)+'<div class="name">'+escap(p?.name||'#'+id)+'<small>#'+id+'</small></div><div class="tags">'+names.map(sourceTag).join('')+'</div><div class="loc">'+escap(loc.join(' · '))+(loc.length<new Set(rows.map(r=>r.map)).size?' 等':'')+escap(extra)+'</div>';
+    el.onclick=()=>openSourceDetail(id);
+    return el;
+  }
+  function cards(rows){
+    const box=document.createElement('div');box.className='cards sourceCards';
+    const byId=new Map();
+    for(const r of rows){if(!byId.has(r.id))byId.set(r.id,[]);byId.get(r.id).push(r);}
+    for(const id of [...byId.keys()].sort((a,b)=>a-b))box.append(spawnCard(id,byId.get(id)));
+    if(!box.children.length)box.innerHTML='<div class="sourceEmpty">此范围没有可证实的静态出没记录。</div>';
+    return box;
+  }
+  function bySpecies(rows){
+    const root=document.getElementById('results');
+    const title=document.createElement('div');title.className='section';
+    title.innerHTML='<div><h3>全部出没来源 <span class="secCount">'+uniqueIds(rows).length+' 种</span></h3><p>按精确物种编号查询，不按进化家族复制霸主或特殊身份。</p></div>';
+    root.append(title,cards(rows));
+  }
+  function byMap(rows){
+    const root=document.getElementById('results');
+    let count=0;
+    for(const m of (state.map==='all'?MAPS:[state.map])){
+      const stages=state.stage==='all'?[1,2,3]:[Number(state.stage)];
+      const groups=stages.map(s=>({title:'第'+s+'层 · 原生配置',records:rows.filter(r=>r.map===m&&r.stage===s)}));
+      groups.push({title:'地图级来源 · 楼层待核实',records:rows.filter(r=>r.map===m&&r.stage==null)});
+      for(const g of groups){
+        if(!g.records.length)continue;
+        count++;
+        const panel=document.createElement('details'); panel.className='sourceGroup';
+        const title=document.createElement('summary');
+        title.textContent=mapName(m)+' · '+g.title+' · '+uniqueIds(g.records).length+' 种';
+        panel.append(title);
+        let populated=false;
+        panel.addEventListener('toggle',()=>{if(panel.open&&!populated){panel.append(cards(g.records));populated=true;}});
+        root.append(panel);
+        if(state.map!=='all'&&groups.filter(x=>x.records.length).length===1)panel.open=true;
+      }
+    }
+    if(!count){const el=document.createElement('div');el.className='sourceEmpty';el.textContent='此范围没有可证实的静态出没记录。';root.append(el);}
+  }
+  function spawnRender(){
+    const rows=selectedRecords(), total=uniqueIds(rows).length;
+    for(const [i,b] of [...document.querySelectorAll('#maps button')].entries()){
+      const m=i===0?'all':MAPS[i-1];
+      const n=uniqueIds(selectedRecords(m,state.stage)).length;
+      const note=b.querySelector('small');if(note)note.textContent=n+' 种有来源';
+    }
+    document.getElementById('title').textContent=state.map==='all'?'全部地图':mapName(state.map);
+    document.getElementById('subtitle').textContent=(state.stage==='all'?'全部楼层':'第'+state.stage+'层')+' · 全部出没来源 · 精确物种编号';
+    document.getElementById('countDirect').textContent=total;
+    document.getElementById('labelDirect').textContent='有来源记录的物种';
+    document.getElementById('countOther').textContent=rows.length;
+    document.getElementById('labelOther').textContent='来源记录';
+    const note=document.getElementById('sourceEvidenceNote');
+    note.textContent=settings.source==='alpha'
+      ?'⚠️ 普通 Alpha 候选仅由静态普通敌人池推导，原生 Alpha 选种规则尚未独立核验。不能当成实际必定刷新的 Alpha。'
+      :settings.source==='rift'
+      ?'⚠️ 裂隙 Alpha 需要在实际游戏运行时读取本局 alphaId；独立网页没有游戏运行态，不提供猜测的静态名单。'
+      :'注意：常规/后期敌人是静态楼层候选；地图居民、地图特殊物种仅确认地图级配置（楼层待核实）；霸主和召唤者按原生三层配置定位。任何出没来源都不自动证明普通或经典异色资格。';
+    document.getElementById('results').replaceChildren();
+    if(settings.source==='rift'){
+      const el=document.createElement('div');el.className='sourceEmpty';el.textContent='网页无法读取本局裂隙 alphaId，因此此处不展示推测名单。请在游戏中使用 Pilot 的本局裂隙只读记录。';document.getElementById('results').append(el);
+    }else if(settings.layout==='map')byMap(rows);else bySpecies(rows);
+  }
+  const shinyRender=render;
+  render=function(){
+    shinyRender();
+    const inSpawn=settings.mode==='spawn';
+    document.body.classList.toggle('spawnView',inSpawn);
+    filters.hidden=!inSpawn;
+    for(const b of bar.querySelectorAll('[data-source-mode]'))b.classList.toggle('active',b.dataset.sourceMode===settings.mode);
+    for(const b of filters.querySelectorAll('[data-source-filter]'))b.classList.toggle('active',b.dataset.sourceFilter===settings.source);
+    for(const b of filters.querySelectorAll('[data-source-layout]'))b.classList.toggle('active',b.dataset.sourceLayout===settings.layout);
+    if(inSpawn)spawnRender();
+  };
+  bar.addEventListener('click',e=>{
+    const btn=e.target.closest('[data-source-mode]');if(!btn)return;
+    settings.mode=btn.dataset.sourceMode;
+    if(settings.mode==='spawn'&&typeof setCollectionMode==='function')setCollectionMode(false);
+    render();
+  });
+  filters.addEventListener('click',e=>{
+    const kind=e.target.closest('[data-source-filter]'),layout=e.target.closest('[data-source-layout]');
+    if(kind)settings.source=kind.dataset.sourceFilter;
+    if(layout)settings.layout=layout.dataset.sourceLayout;
+    if(kind||layout)render();
+  });
+  render();
+})();
+
 </script><div aria-hidden="true" aria-label="支持作者 Jon" aria-modal="true" class="modalShell supportShell" id="supportDialog" role="dialog">
 <div class="modal supportPanel" role="document">
 <div class="supportHeader"><div><div class="supportEyebrow">SUPPORT THIS PROJECT</div><h2>♡ 支持作者 Jon</h2></div><button aria-label="关闭支持窗口" class="btn" id="closeSupport" type="button">✕ 关闭</button></div>
