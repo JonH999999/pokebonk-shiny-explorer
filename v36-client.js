@@ -4,7 +4,7 @@
 const $=id=>document.getElementById(id);
 const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const base=String(window.PB_V36_API_BASE||"").replace(/\/+$/,"");
-const state={mode:"shiny",map:"all",stage:"all",variant:"normal",q:"",source:"all",layout:"species",page:1,hideOwned:false,mark:false};
+const state={mode:"shiny",map:"all",stage:"all",variant:"normal",q:"",source:"all",layout:"species",page:1,hideOwned:false,mark:false,showOther:false};
 const legends={144:["天空冰川","天空之湖圣域"],145:["风暴海岸","雷霆海角圣域"],146:["岩石沙漠","沙漠圣域"],150:["华蓝洞窟","洞窟深处圣域"],151:["青翠森林","森林圣域"]};
 const getOwned=k=>{try{return new Set(JSON.parse(localStorage.getItem("pb-exclude-owned-"+k)||"[]").map(Number))}catch{return new Set()}};
 const owned={normal:getOwned("normal"),classic:getOwned("classic")};
@@ -112,11 +112,12 @@ function shinyRender(view){
  $("title").textContent=view.counts.items.find(m=>m.id===state.map)?.name||"全部地图";
  $("subtitle").textContent=(state.stage==="all"?"全部楼层":"第"+state.stage+"层")+" · "+(state.variant==="normal"?"普通异色":"经典异色")+" · 按进化家族统计";
  const regular=view.candidates.items.filter(p=>p.source==="regular"&&visible(p));
- $("countDirect").textContent=regular.length;$("labelDirect").textContent="常规自然候选";
+ $("countDirect").textContent=view.candidates.items.filter(visible).length;$("labelDirect").textContent=state.variant==="normal"?"异色候选（含特殊）":"经典自然候选";
  $("countOther").textContent=view.candidates.items.filter(hasOwned).length;$("labelOther").textContent="候选已收藏";
  $("results").replaceChildren();
  section("常规自然池候选","普通与经典共用常规地图／楼层候选；经典还受家族收藏与实际刷新计划约束。",
   regular.map(p=>card(p,"常规出没","点击查看家族的具体地图与楼层",()=>detail(p))));
+ if(state.showOther&&state.map!=="all"&&state.stage!=="all")section("同地图其他楼层","不在本层，但存在于同一地图其他楼层的常规家族。",(view.others||[]).filter(visible).map(p=>card(p,"其他楼层","点击查看出现楼层",()=>detail(p))));
  section(state.variant==="classic"?"特殊家族 · 经典自然池无路线":"特殊家族 · 普通异色特殊来源",
   state.variant==="classic"?"地图特殊来源不会自动获得经典自然异色资格。":"没有常规敌人来源，但普通异色具有特殊来源。",
   view.exceptions.special.filter(visible).map(p=>card(p,state.variant==="classic"?"经典自然池无路线":"特殊出没",p.reason,()=>detail(p))));
@@ -155,7 +156,7 @@ async function refresh(){
  const call=++epoch;updateControls();notice("正在查询…");
  try{
   if(state.mode==="shiny"){
-   const view=await api("/api/v1/view",{map:state.map,stage:state.stage,variant:state.variant,q:state.q});
+   const view=await api("/api/v1/view",{map:state.map,stage:state.stage,variant:state.variant,q:state.q,other:state.showOther?"1":"0"});
    if(call!==epoch)return;mapsRender(view.counts.items);shinyRender(view);
   }else{
    const [counts,data]=await Promise.all([
@@ -184,7 +185,7 @@ function init(){
  document.querySelectorAll("[data-stage]").forEach(b=>b.onclick=()=>{state.stage=b.dataset.stage;state.page=1;refresh()});
  $("search").oninput=e=>{state.q=e.target.value;state.page=1;clearTimeout(queryTimer);queryTimer=setTimeout(refresh,240)};
  $("hideOwned").onchange=e=>{state.hideOwned=e.target.checked;refresh()};
- $("others").onchange=e=>{refresh()};
+ $("others").onchange=e=>{state.showOther=e.target.checked;refresh()};
  $("mark").onclick=()=>{state.mark=!state.mark;updateControls()};
  $("finishMark").onclick=()=>{state.mark=false;updateControls()};
  $("specialMetric").onclick=()=>{const fold=$("legendaryFold");fold.open=!fold.open;$("specialMetric").setAttribute("aria-expanded",String(fold.open))};
