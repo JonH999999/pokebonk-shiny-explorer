@@ -1,0 +1,30 @@
+{
+  "name": "pokebonk-catalog-v36-staging",
+  "main": "./src/index.js",
+  "compatibility_date": "2026-11-18",
+  "workers_dev": true,
+  "upload_source_maps": false,
+  "vars": {
+    "ALLOWED_ORIGIN": "https://jonh999999.github.io",
+    "ALLOWED_HOSTNAMES": "jonh999999.github.io"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "pokebonk-catalog-v36-staging",
+      "database_id": "REPLACE_WITH_REAL_DATABASE_ID"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "RL_COMMON",
+      "namespace_id": "3601",
+      "simple": { "limit": 30, "period": 60 }
+    },
+    {
+      "name": "RL_DETAILS",
+      "namespace_id": "3602",
+      "simple": { "limit": 10, "period": 60 }
+    }
+  ]
+}
