@@ -166,7 +166,9 @@ async function checkRate(req,env,isDetail,headers) {
   const bucket=ip+"|"+ua;
   try{
     const a=await env.RL_COMMON.limit({key:bucket});
-    const b=isDetail?await env.RL_DETAILS.limit({key:bucket}):{success:true};
+    const url=new URL(req.url);
+    const depth=url.pathname==="/api/v1/spawns"?(url.searchParams.get("map")==="all"?4:3):(url.pathname.startsWith("/api/v1/family/")?2:1);
+    const b=isDetail?await env.RL_DETAILS.limit({key:bucket,delta:depth}):{success:true};
     if(a.success&&b.success)return null;
     const ok=await verifyToken(req.headers.get("X-Turnstile-Token"),req,env);
     if(ok)return null;
