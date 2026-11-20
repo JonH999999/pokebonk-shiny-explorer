@@ -4,7 +4,6 @@
  * Copyright (c) Jon. This Worker may be public; never commit production DB snapshots.
  */
 const LEGENDS = new Set([144,145,146,150,151]);
-const NO_KNOWN = new Set([243,244,245,249,250,251]);
 const SOURCE_KINDS = new Set(["all","regular","special","totem","summoner","alpha","rift"]);
 const ERROR = (code,message,status,headers={}) => json({error:code,message},status,headers);
 function json(payload,status=200,headers={}) {
@@ -25,10 +24,9 @@ function presence(data,p,kind,map="all",stage="all") {
   return maps.some(m=>levels.some(st=>(data.current[m]?.[String(st)]?.[kind]||[]).some(id=>data.species[id]?.family===p.family)));
 }
 function category(data,p) {
-  if(LEGENDS.has(p.id))return "legend";
-  if(NO_KNOWN.has(p.id))return "no_source";
   if(presence(data,p,"regular"))return "regular";
   if(presence(data,p,"special"))return "special_only";
+  if(LEGENDS.has(p.id))return "legend";
   return "no_source";
 }
 function matchesText(data,p,q){
@@ -89,6 +87,11 @@ function candidates(data,map,stage,variant,q) {
     items.push({...summarized(data,p),source:regular?"regular":"special"});
   }
   return {map,stage,variant,count:items.length,items};
+}
+function otherFloors(data,map,stage,variant,q) {
+  if(map==="all"||stage==="all")return [];
+  return data.roster.filter(p=>matchesText(data,p,q)&&!presence(data,p,"regular",map,stage)&&presence(data,p,"regular",map,"all"))
+    .map(p=>({...summarized(data,p),source:"regular"}));
 }
 function exceptions(data,map,variant,q){
   const special=data.roster.filter(p=>category(data,p)==="special_only"&&matchesText(data,p,q)&&(map==="all"||specialMaps(data,p).includes(map))).map(p=>({...summarized(data,p),reason:explain(data,p,variant),mapNames:specialMaps(data,p).map(m=>data.maps[m])}));
@@ -201,7 +204,9 @@ export default {
     catch{return ERROR("data_unavailable","图鉴数据暂不可用，请稍后重试。",503,headers)}
     const map=bounded(url.searchParams.get("map"),["all",...Object.keys(data.maps)],"all");
     const stage=bounded(url.searchParams.get("stage"),["all","1","2","3"],"all");
-    if(path==="/api/v1/view")return json({map,stage,variant,counts:mapCounts(data,variant,stage),candidates:candidates(data,map,stage,variant,q),exceptions:exceptions(data,map,variant,q)},200,headers);
+    if(path==="/api/v1/view")return json({map,stage,variant,counts:mapCounts(data,variant,stage),candidates:candidates(data,map,stage,variant,q),
+      others:url.searchParams.get("other")==="1"?otherFloors(data,map,stage,variant,q):[],
+      exceptions:exceptions(data,map,variant,q)},200,headers);
     if(path==="/api/v1/catalog")return json(catalog(data,q),200,headers);
     if(path==="/api/v1/map-counts")return json(mapCounts(data,variant,stage),200,headers);
     if(path==="/api/v1/candidates")return json(candidates(data,map,stage,variant,q),200,headers);
