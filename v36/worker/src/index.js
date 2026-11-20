@@ -201,6 +201,7 @@ export default {
     catch{return ERROR("data_unavailable","图鉴数据暂不可用，请稍后重试。",503,headers)}
     const map=bounded(url.searchParams.get("map"),["all",...Object.keys(data.maps)],"all");
     const stage=bounded(url.searchParams.get("stage"),["all","1","2","3"],"all");
+    if(path==="/api/v1/view")return json({map,stage,variant,counts:mapCounts(data,variant,stage),candidates:candidates(data,map,stage,variant,q),exceptions:exceptions(data,map,variant,q)},200,headers);
     if(path==="/api/v1/catalog")return json(catalog(data,q),200,headers);
     if(path==="/api/v1/map-counts")return json(mapCounts(data,variant,stage),200,headers);
     if(path==="/api/v1/candidates")return json(candidates(data,map,stage,variant,q),200,headers);
